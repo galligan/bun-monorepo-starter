@@ -1,0 +1,45 @@
+{
+  "name": "bun-monorepo-starter",
+  "version": "1.0.0",
+  "description": "A modern TypeScript monorepo starter template with Bun, Turbo, and Ultracite",
+  "type": "module",
+  "private": true,
+  "keywords": ["monorepo", "bun", "typescript", "turbo", "template", "starter"],
+  "author": "Matt Galligan <hello@mattgalligan.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/galligan/bun-monorepo-starter.git"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "test": "turbo test",
+    "test:ci": "turbo test --concurrency=1",
+    "format": "bun x ultracite@latest format",
+    "lint": "bun x ultracite@latest lint",
+    "lint:fix": "bun x ultracite@latest lint --write",
+    "typecheck": "turbo typecheck",
+    "typecheck:all": "tsc --noEmit",
+    "ci:full": "bun run lint && bun run typecheck && bun run test:ci && bun run build",
+    "setup:tests": "bun scripts/setup-tests.ts",
+    "format:check": "bun x ultracite@latest format --check",
+    "prepare": "lefthook install",
+    "lefthook:run": "lefthook run",
+    "setup:branch-protection": "bun run scripts/setup-branch-protection.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "@types/bun": "^1.1.14",
+    "@types/node": "^22.10.5",
+    "lefthook": "^1.12.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "ultracite": "5.1.1"
+  },
+  "packageManager": "bun@1.1.44"
+}
