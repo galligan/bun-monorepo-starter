@@ -1,5 +1,5 @@
 /**
- * Commitlint configuration for bun-monorepo-starter
+ * Commitlint configuration
  * Ensures conventional commit format for all commit messages
  * @see https://www.conventionalcommits.org/
  */

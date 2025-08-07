@@ -69,8 +69,8 @@ Use the `@/*` path mapping to reference internal packages:
 
 ```typescript
 // In your app or package
-import { someUtil } from "@/utils";
-import { Component } from "@/ui";
+import { someUtil } from '@/utils';
+import { Component } from '@/ui';
 ```
 
 Update `tsconfig.json` paths as needed for your package names.
@@ -99,7 +99,7 @@ This template includes several quality gates:
 
 ### Commit Messages
 
-```bash
+```text
 feat(ui): add new button component
 fix(api): resolve authentication timeout
 docs: update installation instructions
