@@ -26,7 +26,7 @@ A modern, opinionated TypeScript monorepo starter template featuring Bun, Turbo,
 
 ## 📁 Project Structure
 
-```
+```text
 ├── apps/           # Applications (Next.js, Node.js servers, etc.)
 ├── packages/       # Shared libraries and utilities
 ├── biome.jsonc     # Biome configuration

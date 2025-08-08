@@ -10,5 +10,16 @@
       "allowComments": true,
       "allowTrailingCommas": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.md", "**/*.mdx", "**/*.mdc"],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      }
+    }
+  ]
 }
