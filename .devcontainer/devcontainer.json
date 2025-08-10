@@ -1,0 +1,102 @@
+{
+  "name": "Bun Monorepo Development",
+  "dockerFile": "Dockerfile",
+
+  // Configure tool-specific properties
+  "customizations": {
+    "vscode": {
+      // Install essential extensions
+      "extensions": [
+        // Core language support
+        "biomejs.biome",
+        "ms-vscode.vscode-typescript-next",
+
+        // Formatting & linting
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "DavidAnson.vscode-markdownlint",
+
+        // Monorepo & tooling
+        "ms-vscode.vscode-json",
+        "redhat.vscode-yaml",
+
+        // Git & productivity
+        "eamodio.gitlens",
+        "GitHub.copilot",
+
+        // Optional but useful
+        "ms-vscode.hexdump",
+        "ms-vscode.vscode-json"
+      ],
+
+      // Workspace settings that work well in containers
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "typescript.preferences.includePackageJsonAutoImports": "on",
+        "extensions.ignoreRecommendations": false
+      }
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports available locally
+  "forwardPorts": [3000, 3001, 3002, 4173, 5173, 8080],
+  "portsAttributes": {
+    "3000": {
+      "label": "App",
+      "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "App 2",
+      "onAutoForward": "silent"
+    },
+    "4173": {
+      "label": "Preview",
+      "onAutoForward": "silent"
+    },
+    "5173": {
+      "label": "Vite Dev",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // Post-creation setup
+  "postCreateCommand": ".devcontainer/post-create.sh",
+  "postStartCommand": "bun install",
+
+  // Container user settings
+  "remoteUser": "node",
+  "containerUser": "node",
+  "updateRemoteUserUID": true,
+
+  // Mount workspace with optimized performance
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "source=${localWorkspaceFolder}/node_modules,target=/workspace/node_modules,type=volume"
+  ],
+
+  // Enable useful features
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "node",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    }
+  },
+
+  // Lifecycle hooks
+  "initializeCommand": "echo 'Initializing devcontainer for web agents...'",
+  "onCreateCommand": "echo 'Container created successfully'",
+
+  // Container runtime settings
+  "capAdd": ["SYS_PTRACE"],
+  "securityOpt": ["seccomp=unconfined"],
+
+  // Workspace folder inside container
+  "workspaceFolder": "/workspace"
+}

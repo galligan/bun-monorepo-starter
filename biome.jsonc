@@ -20,6 +20,24 @@
       "formatter": {
         "enabled": false
       }
+    },
+    {
+      "includes": ["**/*.css", "**/*.scss", "**/*.less"],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      }
+    },
+    {
+      "includes": ["**/*.{yaml,yml}"],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      }
     }
   ]
 }

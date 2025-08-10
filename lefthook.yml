@@ -7,7 +7,7 @@ pre-commit:
       run: bun run lint
     typecheck:
       run: bun run typecheck
-      glob: "*.{ts,tsx}"
+      glob: '*.{ts,tsx}'
 
 pre-push:
   parallel: true

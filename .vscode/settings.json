@@ -2,56 +2,49 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "package.json": ".*ignore,.*config,*config.js,*config.ts,*config.json,*config.jsonc,.*rc.json,lefthook.yml,biome.jsonc,biome.json,*.lock,*.lockb,*fig.toml,turbo.json,.markdownlint-cli2.jsonc",
+    "package.json": ".*ignore,.*config,*config.js,*config.ts,*config.json,*config.jsonc,.*rc.json,lefthook.yml,biome.jsonc,biome.json,*.lock,*.lockb,*fig.toml,turbo.json,.markdownlint-cli2.jsonc,.prettierrc.json,.stylelintrc.json",
     "README.md": "LICENSE"
   },
-  "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc][css][graphql]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // Global editor defaults
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "emmet.showExpandedAbbreviation": "never",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.biome": "explicit",
-    "source.organizeImports.biome": "explicit"
+  "typescript.tsdk": "node_modules/typescript/lib",
+
+  // Biome: JavaScript, TypeScript, JSON, GraphQL
+  "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc][graphql]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
+
+  // Prettier: CSS, YAML
+  "[css][scss][less][yaml][yml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // MarkdownLint: Markdown files
   "[markdown]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
     "editor.wordWrap": "on",
     "editor.quickSuggestions": {
-      "comments": "off",
-      "strings": "off",
-      "other": "off"
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
     }
   },
-  "markdownlint.config": {
-    "MD003": {
-      "style": "atx"
-    },
-    "MD004": {
-      "style": "dash"
-    },
-    "MD007": {
-      "indent": 2
-    },
-    "MD013": false,
-    "MD024": {
-      "siblings_only": true
-    },
-    "MD026": false,
-    "MD029": {
-      "style": "ordered"
-    },
-    "MD033": false,
-    "MD036": false,
-    "MD041": false,
-    "MD043": false,
-    "MD046": {
-      "style": "fenced"
-    }
+
+  // Code actions on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.markdownlint": "explicit",
+    "source.fixAll.stylelint": "explicit"
   },
+
+  // Tool-specific validation
+  "stylelint.validate": ["css", "scss", "less"],
+
+  // File associations
   "files.associations": {
     "*.mdc": "markdown"
   }

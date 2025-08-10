@@ -9,23 +9,42 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-# Matches Prettier configuration
 indent_style = space
 indent_size = 2
 
-# Markdown files
-[*.md]
-trim_trailing_whitespace = false
-
-# Package.json files
-[{package.json,*.json}]
+# JavaScript, TypeScript, JSON files (handled by Biome)
+[*.{js,jsx,ts,tsx,json,jsonc}]
 indent_size = 2
+max_line_length = 100
 
-# YAML files
+# CSS, SCSS, Less files (handled by Prettier + Stylelint)
+[*.{css,scss,less}]
+indent_size = 2
+max_line_length = 80
+
+# YAML files (handled by Prettier)
 [*.{yml,yaml}]
 indent_size = 2
+max_line_length = 80
+
+# Markdown files (handled by MarkdownLint)
+[*.{md,mdx,mdc}]
+trim_trailing_whitespace = false
+max_line_length = off
 
 # Shell scripts
 [*.sh]
 indent_size = 2
+
+# Configuration files
+[*.{toml,ini,cfg}]
+indent_size = 2
+
+# Package files
+[package.json]
+indent_size = 2
+
+# Lock files - no formatting
+[*.{lock,lockb}]
+insert_final_newline = false
+trim_trailing_whitespace = false
